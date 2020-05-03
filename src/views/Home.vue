@@ -1,5 +1,10 @@
 <template>
   <div class="home">
+    <div class="uk-alert-danger" uk-alert>
+      <p>
+        Hello there! The website is not finished yet. Come back after 6 may 2020. Thank you for understanding!
+      </p>
+    </div>
     <vk-grid class="uk-child-width-1-3">
       <List
         :list="list"

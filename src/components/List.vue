@@ -17,6 +17,7 @@
           tag="div"
           :group="group"
           v-model="mappedList"
+          ghost-class="ghost"
           v-bind="dragOptions"
           @start="drag = true"
           @end="drag = false"
@@ -26,9 +27,8 @@
               <v-card :tile="true" color="#3c234a" style="margin-bottom: 7px" class="list-group-item" @click="element.dialog = true">
                   <v-card-text style="color: #dfdde0">{{ element.name }}</v-card-text>
               </v-card>
-
               <v-overlay
-                :absolute="absolute"
+                v-show="element.dialog"
                 :opacity="opacity"
                 :value="element.dialog"
                 :z-index="zIndex"
@@ -45,16 +45,14 @@
                       <vk-label @click="element.dialog = false" style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Close</vk-label>
                       <vk-label style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Done</vk-label>
                       <vk-label style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Edit</vk-label>
-
-
                     </vk-grid>
                   </v-card-actions>
                 </v-card>
               </v-overlay>
-
             </div>
           </transition-group>
         </draggable>
+        <AddButton />
       </td></tr></tbody>
     </table>
   </div>
@@ -62,12 +60,12 @@
 
 <script>
   import draggable from 'vuedraggable'
-  import CardModal from "./CardModal";
+  import AddButton from "./AddButton";
     export default {
         name: "List",
         components: {
             draggable,
-            CardModal
+            AddButton
         },
         props: {
             list: null,
@@ -78,9 +76,8 @@
         },
         data () {
             return {
-                absolute: false,
+                absolute: true,
                 opacity: 0.46,
-                overlay: false,
                 zIndex: 5,
                 dialog: false,
                 mappedList: this.list.map(({name, order}) => {
@@ -106,10 +103,26 @@
 </script>
 
 <style>
+  .button {
+    margin-top: 35px;
+  }
+  .flip-list-move {
+    transition: transform 0.5s;
+  }
+  .no-move {
+    transition: transform 0s;
+  }
+  .ghost {
+    opacity: 0;
+    background: #c8ebfb;
+  }
   .list-group {
     min-height: 20px;
   }
   .list-group-item {
+    cursor: move;
+  }
+  .list-group-item i {
     cursor: pointer;
   }
 </style>
