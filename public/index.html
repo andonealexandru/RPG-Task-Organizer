@@ -6,6 +6,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <style>
+      @font-face {
+        font-family: Kongtext;
+        src: url('font/kongtext-webfont.woff2') format('woff2'),
+        url('font/kongtext-webfont.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+      }
+      .kong {
+        font-family: Kongtext;
+      }
+    </style>
   </head>
   <body>
     <noscript>
