@@ -1,35 +1,31 @@
 <template>
   <div class="home">
-    <div class="uk-alert-danger" uk-alert>
-      <p>
-        Hello there! The website is not finished yet. Come back after 6th may 2020. Thank you for understanding!
-      </p>
-    </div>
+    <v-btn @click="$router.push('game')">Joc</v-btn>
     <vk-grid class="uk-child-width-1-3@m uk-padding-large">
       <List
         :list="list"
         :group="1"
-        listTitle="Treburi casnice"
-        icon="home"
+        listTitle="To do"
+        icon="star"
       />
       <List
         :list="list2"
         :group="2"
-        listTitle="Treburi pe calculator"
-        icon="laptop"
+        listTitle="Daily tasks"
+        icon="future"
       />
       <List
         :list="list3"
         :group="1"
-        listTitle="Teme"
-        icon="copy"
+        listTitle="Habits"
+        icon="bolt"
       />
     </vk-grid>
   </div>
 </template>
 
 <script>
-  import List from "../components/List";
+  import List from "../components/website/List";
 
   export default {
       name: "home",

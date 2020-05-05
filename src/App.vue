@@ -9,6 +9,10 @@
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100vh;
+  background: #1d1223 no-repeat;
+  background-size: 100% auto;
+  overflow: auto;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 </style>

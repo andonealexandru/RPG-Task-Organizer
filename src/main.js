@@ -7,6 +7,7 @@ import VuikitIcons from '@vuikit/icons'
 import Vuetify from 'vuetify'
 
 import 'vuetify/dist/vuetify.min.css'
+import 'nes.css/css/nes.min.css';
 import '@vuikit/theme'
 
 Vue.config.productionTip = false;
