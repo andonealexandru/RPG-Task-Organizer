@@ -5,7 +5,7 @@
         Hello there! The website is not finished yet. Come back after 6th may 2020. Thank you for understanding!
       </p>
     </div>
-    <vk-grid class="uk-child-width-1-3">
+    <vk-grid class="uk-child-width-1-3@m uk-padding-large">
       <List
         :list="list"
         :group="1"
@@ -68,14 +68,6 @@
                   {
                       name: 'Element 1.7',
                       order: 7
-                  },
-                  {
-                      name: 'Element 1.8',
-                      order: 8
-                  },
-                  {
-                      name: 'Element 1.9',
-                      order: 9
                   }
               ],
               list2: [
@@ -148,10 +140,6 @@
                   {
                       name: 'Element 3.8',
                       order: 8
-                  },
-                  {
-                      name: 'Element 3.9',
-                      order: 9
                   }
               ]
           };
