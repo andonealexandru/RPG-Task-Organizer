@@ -1,9 +1,9 @@
 <template>
   <div class="enemyTile">
     <div>
-      <progress class="nes-progress is-error" :value="currentEnemy.health" v-bind:max="currentEnemy.max_health"/>
-      <img v-show="currentHeroState === 'Idle'" src="../../assets/shame_shame_shame.gif">
-      <img v-show="currentHeroState === 'Attacking'" src="../../assets/shame_shame_shame.gif">
+      <progress class="nes-progress is-error" :value="currentEnemy.health" v-bind:max="currentEnemy.max_health"/><br>
+      <img v-show="currentHeroState === 'Idle'" class="caracter" src="../../assets/normal.gif">
+      <img v-show="currentHeroState === 'Attacking'" class="caracter" src="../../assets/attack.gif">
     </div>
   </div>
 </template>
@@ -80,4 +80,12 @@
     height: 3vh;
     width: 105px;
   }
+
+    .caracter{
+      height: 40vh;
+      margin-bottom: 100px;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
 </style>

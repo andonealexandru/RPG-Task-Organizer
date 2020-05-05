@@ -1,9 +1,9 @@
 <template>
   <div class="heroTile">
     <div>
-      <progress class="nes-progress" style="visibility: hidden;"/>
-      <img v-show="currentHeroState === 'Idle'" src="../../assets/shame_shame_shame.gif">
-      <img v-show="currentHeroState === 'Attacking'" src="../../assets/shame_shame_shame.gif">
+      <progress class="nes-progress" style="visibility: hidden" /><br>
+      <img v-show="currentHeroState === 'Idle'" class="caracter"  src="../../assets/normal-pro.gif">
+      <img v-show="currentHeroState === 'Attacking'" class="caracter" src="../../assets/attack-pro.gif">
     </div>
 
 <!-- actions-menu START -->
@@ -184,6 +184,14 @@
 
   .nes-progress{
     height: 3vh;
+  }
+
+  .caracter{
+    height: 40vh;
+    margin-bottom: 100px;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
   }
 
   .actions-menu {
