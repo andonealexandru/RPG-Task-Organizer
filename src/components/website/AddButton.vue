@@ -12,12 +12,23 @@
       :value="overlay"
       :z-index="zIndex"
     >
-      <v-card color="#3c234a" class="uk-width-1-3@m uk-align-center">
+      <v-card color="#3c234a" class="uk-align-center" style="width: 30vw; min-width: 300px">
         <v-card-title class="headline" style="color: #dfdde0">Add a new Task</v-card-title>
 
-        <v-card-subtitle style="color: #dfdde0">Subtitlu</v-card-subtitle>
+        <v-card-text style="color: #dfdde0">
+          <form>
+          <v-text-field
+            label="Task Title">
+          </v-text-field>
 
-        <v-card-text style="color: #dfdde0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et lectus commodo sem fermentum vehicula non vitae tortor. Praesent porttitor eget nunc nec suscipit. Etiam maximus accumsan purus et ultrices. Nulla luctus, leo eu dapibus bibendum, mi arcu elementum nisl, sed mattis felis dui eu orci. Nulla eget elit eget lectus aliquet commodo. Morbi tortor justo, euismod in lectus quis, dapibus laoreet est. Nunc id tellus arcu. Maecenas vestibulum augue a magna luctus, nec accumsan turpis fermentum. </v-card-text>
+         <v-textarea
+          name="input-7-1"
+          label=""
+          value=""
+          hint="Write a description here..."
+        ></v-textarea>
+          </form>
+        </v-card-text>
 
         <v-card-actions>
           <vk-grid class="uk-align-center">

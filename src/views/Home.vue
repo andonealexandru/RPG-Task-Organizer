@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-      <div class="actions-menu kong">
-        <div class="contain">
+      <div class="actions-menu2 kong">
+        <div class="contain2">
             <div class="col">
                 <ul> 
                     <li>
@@ -10,20 +10,36 @@
                 </ul> 
             </div>
             <div class="col">
-                <h1 class="kong">Stats:</h1>
+                <h1 class="kong2">Stats:</h1>
                 <ul>
                 <li>Level: {{ heroLevel }}</li>
                 <li>MAX HP: {{ maxHealth }}</li>
-                <li>Current HP: {{ currentHealth }}</li>
                 </ul>
             </div>
-            <br>
-            <div>
+            <div class="col">
+                <h1 class="kong2"><img src="../assets/coin.png" alt="gold" class="coin">: 50</h1>
+                
+            </div>
+            <div class = "col">
                 <ul>
                     <li>
-                        <button type="button" class="nes-btn uk-align-right" @click="$router.push('game')">Take a break</button>
+                    </li>
+                    <li>
+                        <button type="button" class="nes-btn" @click="$router.push('game')">Break</button>
+                    </li>
+                    <li>
+                      <button type="button" class="nes-btn" @click="$router.push({name: 'Description'})">Home</button>
                     </li>
                 </ul>
+            </div>
+            <div class = "col">
+              <ul>
+                <li>
+                    </li>
+                <li> 
+                        It costs you 50 <img src="../assets/coin.png" alt="gold"> to take a break... so start working 
+                </li>
+              </ul>
             </div>
 
 
@@ -55,13 +71,14 @@
 
 <script>
   import List from "../components/website/List";
-
+  import Description from "../views/Description"
   export default {
       name: "home",
       display: "Transitions",
       order: 7,
       components: {
-          List
+          List,
+          Description
       },
       data() {
           return {
@@ -187,12 +204,19 @@
 
 <style>
   .nes-btn{
-        width: 300px;
+        width: 100px;
         cursor: pointer;
 }
   .caracter{
         width: 430px;
-        height: 180px;
+        height: 150px;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+  }
+  .coin{
+        width: 70px;
+        height: 70px;
         image-rendering: pixelated;
         image-rendering: -moz-crisp-edges;
         image-rendering: crisp-edges;
@@ -216,16 +240,16 @@
   .list-group-item i {
     cursor: pointer;
   }
-  .actions-menu {
+  .actions-menu2 {
     width: 100vw;
     margin-left: 0;
     top: 0;
     height: auto;
-    background-image: linear-gradient(to top,rgba(95, 0, 63, 0) , #1a001a);
-    border-bottom :1px solid #999999;
+    background-color: #3c234a;
+    
   }
 
-  .actions-menu .col {
+  .actions-menu2 .col {
     width: 190px;
     height: auto;
     float: left;
@@ -235,7 +259,7 @@
     padding: 0px 20px 20px 20px;
   }
 
-  .actions-menu .col h1 {
+  .actions-menu2 .col h1 {
     margin: 0;
     padding: 0;
 
@@ -248,13 +272,13 @@
     letter-spacing: 0.250em;
   }
 
-  .actions-menu .col ul {
+  .actions-menu2 .col ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
 
-  .actions-menu .col ul li {
+  .actions-menu2 .col ul li {
     color: #999999;
     font-size: 14px;
 
@@ -266,12 +290,7 @@
     -moz-transition: .2s;
   }
 
-  .social ul li {
-    display: inline-block;
-    padding-right: 5px !important;
-  }
-
-  .actions-menu .col ul li:hover {
+  .actions-menu2 .col ul li:hover {
     color: #ffffff;
     transition: .1s;
     -webkit-transition: .1s;
