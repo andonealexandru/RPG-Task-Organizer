@@ -18,6 +18,11 @@ Vue.use(VueRouter);
     path: '/game',
     name: 'Game',
     component: () => import('../views/Game.vue')
+  },
+  {
+    path: '/confirm/:token',
+    name: 'Confirm Account',
+    component: () => import('../views/ConfirmAccount.vue')
   }
 ];
 

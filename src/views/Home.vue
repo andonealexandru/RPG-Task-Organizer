@@ -18,7 +18,7 @@
             </div>
             <div class="col">
                 <h1 class="kong2"><img src="../assets/coin.png" alt="gold" class="coin">: 50</h1>
-                
+
             </div>
             <div class = "col">
                 <ul>
@@ -36,8 +36,8 @@
               <ul>
                 <li>
                     </li>
-                <li> 
-                        It costs you 50 <img src="../assets/coin.png" alt="gold"> to take a break... so start working 
+                <li>
+                        It costs you 50 <img src="../assets/coin.png" alt="gold"> to take a break... so start working
                 </li>
               </ul>
             </div>
@@ -48,20 +48,17 @@
     </div>
     <vk-grid class="uk-child-width-1-3@m uk-padding-large">
       <List
-        :list="list"
-        :group="1"
+        group="todo"
         listTitle="To do"
         icon="star"
       />
       <List
-        :list="list2"
-        :group="2"
+        group="daily"
         listTitle="Daily tasks"
         icon="future"
       />
       <List
-        :list="list3"
-        :group="1"
+        group="habits"
         listTitle="Habits"
         icon="bolt"
       />
@@ -70,6 +67,7 @@
 </template>
 
 <script>
+  import axios from 'axios';
   import List from "../components/website/List";
   import Description from "../views/Description"
   export default {
@@ -82,98 +80,81 @@
       },
       data() {
           return {
-              list: [
-                  {
-                      name: 'Element 1.1'
-                  },
-                  {
-                      name: 'Element 1.2'
-                  },
-                  {
-                      name: 'Element 1.3'
-                  },
-                  {
-                      name: 'Element 1.4'
-                  },
-                  {
-                      name: 'Element 1.5'
-                  },
-                  {
-                      name: 'Element 1.6'
-                  },
-                  {
-                      name: 'Element 1.7'
-                  }
-              ],
-              list2: [
-                  {
-                      name: 'Element 2.1'
-                  },
-                  {
-                      name: 'Element 2.2'
-                  },
-                  {
-                      name: 'Element 2.3'
-                  },
-                  {
-                      name: 'Element 2.4'
-                  },
-                  {
-                      name: 'Element 2.5'
-                  },
-                  {
-                      name: 'Element 2.6'
-                  },
-                  {
-                      name: 'Element 2.7'
-                  },
-                  {
-                      name: 'Element 2.8'
-                  },
-                  {
-                      name: 'Element 2.9'
-                  }
-              ],
-              list3: [
-                  {
-                      name: 'Element 3.1'
-                  },
-                  {
-                      name: 'Element 3.2'
-                  },
-                  {
-                      name: 'Element 3.3'
-                  },
-                  {
-                      name: 'Element 3.4'
-                  },
-                  {
-                      name: 'Element 3.5'
-                  },
-                  {
-                      name: 'Element 3.6'
-                  },
-                  {
-                      name: 'Element 3.7'
-                  },
-                  {
-                      name: 'Element 3.8'
-                  }
-              ]
+              todo: null,
+              daily: null,
+              habits: null
           };
       },
+      created() {
+          //this.getTodo();
+          //this.getDaily();
+          //this.getHabits();
+      },
       computed: {
-      currentHealth() {
-        return this.$store.state.currentHeroHealth
+        currentHealth() {
+          return this.$store.state.currentHeroHealth
 
+        },
+        maxHealth() {
+          return this.$store.state.currentHeroMaxHealth
+        },
+        heroLevel() {
+          return this.$store.state.currentHeroLevel
+        }
       },
-      maxHealth() {
-        return this.$store.state.currentHeroMaxHealth
-      },
-      heroLevel() {
-        return this.$store.state.currentHeroLevel
+      methods: {
+          getTodo () {
+              let vm = this;
+              let axiosConfig = {
+                  headers: {
+                      'Accept': 'application/json',
+                      'Authorization': this.$store.state.authorization
+                  }
+              };
+
+              axios.get('https://rpg-task-organizer-backend.herokuapp.com/users/todo/' + vm.$store.state.userId, axiosConfig)
+                .then(function (response) {
+                  vm.todo = response.data;
+                })
+                .catch(function (error) {
+                  console.log(error.response.data.message);
+                })
+          },
+          getDaily() {
+              let vm = this;
+              let axiosConfig = {
+                  headers: {
+                      'Accept': 'application/json',
+                      'Authorization': this.$store.state.authorization
+                  }
+              };
+
+              axios.get('https://rpg-task-organizer-backend.herokuapp.com/users/daily/' + vm.$store.state.userId, axiosConfig)
+                  .then(function (response) {
+                      vm.daily = response.data;
+                  })
+                  .catch(function (error) {
+                      console.log(error.response.data.message);
+                  })
+          },
+          getHabits() {
+              let vm = this;
+              let axiosConfig = {
+                  headers: {
+                      'Accept': 'application/json',
+                      'Authorization': this.$store.state.authorization
+                  }
+              };
+
+              axios.get('https://rpg-task-organizer-backend.herokuapp.com/users/habits/' + vm.$store.state.userId, axiosConfig)
+                  .then(function (response) {
+                      vm.habits = response.data;
+                  })
+                  .catch(function (error) {
+                      console.log(error.response.data.message);
+                  })
+          }
       }
-    }
   };
 
 </script>
@@ -222,7 +203,7 @@
     top: 0;
     height: auto;
     background-color: #3c234a;
-    
+
   }
 
   .actions-menu2 .col {

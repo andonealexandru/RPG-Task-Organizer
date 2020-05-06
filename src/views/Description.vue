@@ -13,18 +13,19 @@
                 <vk-button type="text" @click="showSignin = true" class="w3-bar-item buton uk-width-1-2@m uk-margin-auto">Sign in</vk-button>
                 <vk-modal :show.sync="showLogin" >
                 <vk-modal-title>Log in</vk-modal-title>
-                <Login />
+                <Login /><!--
                 <p class="uk-text-right">
                     <vk-button class="uk-margin-small-right">Next</vk-button>
-                </p>
+                </p>-->
                 </vk-modal>
 
                 <vk-modal :show.sync="showSignin" >
                 <vk-modal-title>Sign in</vk-modal-title>
                 <Signin />
+                    <!--
                 <p class="uk-text-right">
                     <vk-button class="uk-margin-small-right">Next</vk-button>
-                </p>
+                </p>-->
                 </vk-modal>
             </div>
         </div>
@@ -128,9 +129,9 @@
         <div class="w3-display-middle w3-margin-top w3-center">
         <h1 class="w3-xxlarge w3-text-white"><span class="w3-hide-small w3-text-light-grey">"Discipline is the bridge between goals and accomplishment"</span></h1>
         </div>
-        </header> 
+        </header>
 
-        
+
 
         <!-- Page content -->
         <div class="w3-content w3-padding" style="max-width:1564px">

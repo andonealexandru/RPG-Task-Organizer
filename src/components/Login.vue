@@ -56,40 +56,19 @@
                     }
                 };
 
-                axios.post('https://geografie-backend.herokuapp.com/users/login', this.formData, axiosConfig)
+                axios.post('https://rpg-task-organizer-backend.herokuapp.com/users/login', this.formData, axiosConfig)
                     .then(function (response) {
                         vm.showSpinner = false;
                         store.commit("changeAuth", response.headers['authorization']);
                         store.commit("changeUserId", response.headers['userid']);
-                        vm.status = "Conectat! Generare intrebare...";
-                        vm.getQuestion();
+                        store.commit("changeLogged");
+                        vm.status = "Conectat! Iti pregatim task-urile";
+                        vm.$router.push({name: 'Home'});
                     })
                     .catch(function (error) {
                         vm.showSpinner = false;
                         vm.disabledButton = false;
                         vm.status = "Email sau parola gresita! In caz ca nu ti-ai verificat adresa de email, te rugam sa o verifici!"
-                    })
-            },
-            getQuestion() {
-                let vm = this;
-                let axiosConfig = {
-                    headers: {
-                        'Accept': 'application/json',
-                        'Authorization': store.state.authorization
-                    }
-                };
-
-                axios.get('https://geografie-backend.herokuapp.com/question?userId=' + store.state.userId, axiosConfig)
-                    .then(function (response) {
-                        store.commit("changeQuestion", response.data);
-                        vm.status = "Redirectionare..";
-
-                        if (store.state.question.gridAnswer) {
-                            vm.$router.push({name: 'IntrebareGrila'})
-                        }
-                    })
-                    .catch(function (error) {
-                        vm.status = error.response.data.message;
                     })
             }
         }

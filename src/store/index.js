@@ -1,10 +1,18 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from 'vuex-persistedstate'
 
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
+  plugins: [createPersistedState()],
   state: {
+    // Authentication
+    logged: false,
+    authorization: '',
+    userId: '',
+
+    // Game
     currentView: 'homeScreen',
     currentViewOptions: ['homeScreen', 'howToPlay', 'storyIntro',
       'enemySelectionScreen', 'playGame', 'enemyDefeated'],
@@ -28,6 +36,15 @@ const store = new Vuex.Store({
 
   },
   mutations: {
+    changeLogged(state) {
+      state.logged = true;
+    },
+    changeUserId(state, userId) {
+      state.userId = userId;
+    },
+    changeAuth(state, authorization) {
+      state.authorization = authorization;
+    },
     changeView(state, view) {
       return state.currentView = view
     },

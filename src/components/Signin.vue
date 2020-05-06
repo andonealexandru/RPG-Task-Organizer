@@ -46,12 +46,10 @@
                   firstName: '',
                   lastName: '',
                   email: '',
-                  password: '',
-                  role: 'elev'
+                  password: ''
               },
               responseData: {
                   userId: '',
-                  classId: '',
                   firstName: '',
                   lastName: '',
                   email: ''
@@ -73,7 +71,7 @@
                   }
               };
 
-              axios.post('https://geografie-backend.herokuapp.com/users', this.formData, axiosConfig)
+              axios.post('https://rpg-task-organizer-backend.herokuapp.com/users', this.formData, axiosConfig)
                   .then(function (response) {
                       vm.responseData = response.data;
                       vm.showSpinner = false;
