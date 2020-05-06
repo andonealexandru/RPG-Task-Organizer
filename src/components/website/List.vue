@@ -20,7 +20,7 @@
           ghost-class="ghost"
           v-bind="dragOptions"
           @start="drag = true"
-          @end="drag = false"
+          @end="handleDrag"
         >
           <transition-group type="transition" :name="!drag ? 'flip-list' : null">
             <div v-for="element in mappedList" :key="element.order">
@@ -80,12 +80,20 @@
                 opacity: 0.46,
                 zIndex: 5,
                 dialog: false,
-                mappedList: this.list.map(({name, order}) => {
+                mappedList: this.list.map(({name}, index) => {
                     return {
                         name,
-                        order,
+                        order: index,
                         dialog: false,
-                        id: this.group + '_' + order
+                        id: this.group + '_' + index
+                    };
+                }),
+                storedList: this.list.map(({name}, index) => {
+                    return {
+                        name,
+                        order: index,
+                        dialog: false,
+                        id: this.group + '_' + index
                     };
                 })
             }
@@ -93,10 +101,26 @@
         computed: {
             dragOptions() {
                 return {
-                    animation: 100,
+                    animation: 0,
                     group: "description",
                     disabled: false
                 };
+            }
+        },
+        methods: {
+            handleDrag() {
+                this.drag = false;
+                this.reMapList();
+            },
+            reMapList() {
+                this.storedList = this.mappedList.map(({name}, index) => {
+                    return {
+                        name,
+                        order: index,
+                        dialog: false,
+                        id: this.group + '_' + index
+                    };
+                })
             }
         }
     }

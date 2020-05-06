@@ -3,11 +3,11 @@
       <div class="actions-menu kong">
         <div class="contain">
             <div class="col">
-                <ul> 
+                <ul>
                     <li>
                         <img src = "../assets/normal-pro.gif" class = "caracter">
                     </li>
-                </ul> 
+                </ul>
             </div>
             <div class="col">
                 <h1 class="kong">Stats:</h1>
@@ -67,104 +67,80 @@
           return {
               list: [
                   {
-                      name: 'Element 1.1',
-                      order: 1
+                      name: 'Element 1.1'
                   },
                   {
-                      name: 'Element 1.2',
-                      order: 2
+                      name: 'Element 1.2'
                   },
                   {
-                      name: 'Element 1.3',
-                      order: 3
+                      name: 'Element 1.3'
                   },
                   {
-                      name: 'Element 1.4',
-                      order: 4
+                      name: 'Element 1.4'
                   },
                   {
-                      name: 'Element 1.5',
-                      order: 5
+                      name: 'Element 1.5'
                   },
                   {
-                      name: 'Element 1.6',
-                      order: 6
+                      name: 'Element 1.6'
                   },
                   {
-                      name: 'Element 1.7',
-                      order: 7
+                      name: 'Element 1.7'
                   }
               ],
               list2: [
                   {
-                      name: 'Element 2.1',
-                      order: 1
+                      name: 'Element 2.1'
                   },
                   {
-                      name: 'Element 2.2',
-                      order: 2
+                      name: 'Element 2.2'
                   },
                   {
-                      name: 'Element 2.3',
-                      order: 3
+                      name: 'Element 2.3'
                   },
                   {
-                      name: 'Element 2.4',
-                      order: 4
+                      name: 'Element 2.4'
                   },
                   {
-                      name: 'Element 2.5',
-                      order: 5
+                      name: 'Element 2.5'
                   },
                   {
-                      name: 'Element 2.6',
-                      order: 6
+                      name: 'Element 2.6'
                   },
                   {
-                      name: 'Element 2.7',
-                      order: 7
+                      name: 'Element 2.7'
                   },
                   {
-                      name: 'Element 2.8',
-                      order: 8
+                      name: 'Element 2.8'
                   },
                   {
-                      name: 'Element 2.9',
-                      order: 9
+                      name: 'Element 2.9'
                   }
               ],
               list3: [
                   {
-                      name: 'Element 3.1',
-                      order: 1
+                      name: 'Element 3.1'
                   },
                   {
-                      name: 'Element 3.2',
-                      order: 2
+                      name: 'Element 3.2'
                   },
                   {
-                      name: 'Element 3.3',
-                      order: 3
+                      name: 'Element 3.3'
                   },
                   {
-                      name: 'Element 3.4',
-                      order: 4
+                      name: 'Element 3.4'
                   },
                   {
-                      name: 'Element 3.5',
-                      order: 5
+                      name: 'Element 3.5'
                   },
                   {
-                      name: 'Element 3.6',
-                      order: 6
+                      name: 'Element 3.6'
                   },
                   {
-                      name: 'Element 3.7',
-                      order: 7
+                      name: 'Element 3.7'
                   },
                   {
-                      name: 'Element 3.8',
-                      order: 8
+                      name: 'Element 3.8'
                   }
               ]
           };
@@ -182,7 +158,7 @@
       }
     }
   };
-  
+
 </script>
 
 <style>
