@@ -1,18 +1,7 @@
 <template>
   <div class="home">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-          <div class="w3-top">
-          <div class="w3-bar w3-white w3-wide w3-padding w3-card">
-            <!-- Float links to the right. Hide them on small screens -->
-            <div class="w3-right w3-hide-small">
-              <vk-button type="text" @click="$router.push({name: 'Description'})" class="w3-bar-item buton buton uk-width-1-2@m uk-margin-auto ">Home</vk-button>
-            </div>
-          </div>
-        </div>
-      <div class="actions-menu kong" style="margin-top: 50px">
-        <div class="contain">
+      <div class="actions-menu2 kong">
+        <div class="contain2">
             <div class="col">
                 <ul> 
                     <li>
@@ -21,14 +10,14 @@
                 </ul> 
             </div>
             <div class="col">
-                <h1 class="kong">Stats:</h1>
+                <h1 class="kong2">Stats:</h1>
                 <ul>
                 <li>Level: {{ heroLevel }}</li>
                 <li>MAX HP: {{ maxHealth }}</li>
                 </ul>
             </div>
             <div class="col">
-                <h1 class="kong"><img src="../assets/coin.png" alt="gold" class="coin">: 50</h1>
+                <h1 class="kong2"><img src="../assets/coin.png" alt="gold" class="coin">: 50</h1>
                 
             </div>
             <div class = "col">
@@ -38,6 +27,9 @@
                     <li>
                         <button type="button" class="nes-btn" @click="$router.push('game')">Break</button>
                     </li>
+                    <li>
+                      <button type="button" class="nes-btn" @click="$router.push({name: 'Description'})">Home</button>
+                    </li>
                 </ul>
             </div>
             <div class = "col">
@@ -45,7 +37,7 @@
                 <li>
                     </li>
                 <li> 
-                        It costs you 100 <img src="../assets/coin.png" alt="gold"> to take a break... so start working 
+                        It costs you 50 <img src="../assets/coin.png" alt="gold"> to take a break... so start working 
                 </li>
               </ul>
             </div>
@@ -248,7 +240,7 @@
   .list-group-item i {
     cursor: pointer;
   }
-  .actions-menu {
+  .actions-menu2 {
     width: 100vw;
     margin-left: 0;
     top: 0;
@@ -257,7 +249,7 @@
     
   }
 
-  .actions-menu .col {
+  .actions-menu2 .col {
     width: 190px;
     height: auto;
     float: left;
@@ -267,7 +259,7 @@
     padding: 0px 20px 20px 20px;
   }
 
-  .actions-menu .col h1 {
+  .actions-menu2 .col h1 {
     margin: 0;
     padding: 0;
 
@@ -280,13 +272,13 @@
     letter-spacing: 0.250em;
   }
 
-  .actions-menu .col ul {
+  .actions-menu2 .col ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
 
-  .actions-menu .col ul li {
+  .actions-menu2 .col ul li {
     color: #999999;
     font-size: 14px;
 
@@ -298,12 +290,7 @@
     -moz-transition: .2s;
   }
 
-  .social ul li {
-    display: inline-block;
-    padding-right: 5px !important;
-  }
-
-  .actions-menu .col ul li:hover {
+  .actions-menu2 .col ul li:hover {
     color: #ffffff;
     transition: .1s;
     -webkit-transition: .1s;

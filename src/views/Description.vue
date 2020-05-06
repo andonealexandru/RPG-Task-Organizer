@@ -6,6 +6,7 @@
         <!-- Navbar (sit on top) -->
         <div class="w3-top">
         <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+            <img src="../assets/icon.png" class="w3-bar-item">
           <!-- Float links to the right. Hide them on small screens -->
             <div class="w3-right w3-hide-small">
                 <vk-button type="text" @click="showLogin = true" class="w3-bar-item buton buton uk-width-1-2@m uk-margin-auto ">Log in</vk-button>
