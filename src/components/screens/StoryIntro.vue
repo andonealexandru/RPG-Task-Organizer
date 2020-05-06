@@ -65,7 +65,7 @@
 
 <style scoped>
   .storyIntro {
-    background-image: url('https://steamuserimages-a.akamaihd.net/ugc/931562843189929540/0D841C12AEF575968A5F7EDA21077F694B4CED2C/');
+    background-image: url('https://i.pinimg.com/originals/37/38/c0/3738c0c68850f3882c590fe6f6a01711.gif');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     height: 100vh;

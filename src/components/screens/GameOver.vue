@@ -5,7 +5,7 @@
         <br>
 
      </div>
-     <button type="button" class="nes-btn is-warning kong" v-on:click="reload()">
+     <button type="button" class="nes-btn is-warning kong" v-on:click="handleVictory()">
         Return
     </button>
   </div>
@@ -31,6 +31,10 @@
     methods: {
       reload() {
         window.location.reload(true);
+      },
+      handleVictory(){
+        reload();
+        this.$router.push({name: 'Home'})
       },
       async loadContent() {
         const slug = 'game-over';

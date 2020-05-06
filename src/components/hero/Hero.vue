@@ -187,7 +187,8 @@
   }
 
   .caracter{
-    height: 40vh;
+    height: 250px;
+    width: 250px;
     margin-bottom: 100px;
     image-rendering: pixelated;
     image-rendering: -moz-crisp-edges;

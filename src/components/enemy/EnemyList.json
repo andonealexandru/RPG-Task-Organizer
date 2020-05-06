@@ -1,6 +1,6 @@
 {
   "Raptar": {
-    "name": "Space Grunt",
+    "name": "Brawler",
     "image": "normal.gif",
     "image2": "attack.gif",
     "max_health": "50",
@@ -10,7 +10,7 @@
     "experience": 50
   },
   "Tortle": {
-    "name": "Space Pirate",
+    "name": "Brawler",
     "image": "normal.gif",
     "image2": "attack.gif",    
     "max_health": "100",
@@ -20,7 +20,7 @@
     "experience": 100
   },
   "Venus": {
-    "name": "Space Pirate Captain",
+    "name": "Brawler",
     "max_health": "120",
     "image": "normal.gif",
     "image2": "attack.gif",   
@@ -30,7 +30,7 @@
     "experience": 100
   },
   "FINAL BOSS: Reaper": {
-    "name": "The Ascended One",
+    "name": "Brawler",
     "image": "normal.gif",
     "image2": "attack.gif",    
     "max_health": "100",
