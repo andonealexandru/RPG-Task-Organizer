@@ -20,12 +20,12 @@
           ghost-class="ghost"
           v-bind="dragOptions"
           @start="drag = true"
-          @end="drag = false"
+          @end="handleDrag"
         >
           <transition-group type="transition" :name="!drag ? 'flip-list' : null">
             <div v-for="element in mappedList" :key="element.order">
               <v-card :tile="true" color="#3c234a" style="margin-bottom: 7px" class="list-group-item" @click="element.dialog = true">
-                  <v-card-text style="color: #dfdde0">{{ element.name }}</v-card-text>
+                  <v-card-text style="color: #dfdde0">{{ element.taskTitle }}</v-card-text>
               </v-card>
               <v-overlay
                 v-show="element.dialog"
@@ -33,12 +33,10 @@
                 :value="element.dialog"
                 :z-index="zIndex"
               >
-                <v-card color="#3c234a" class="uk-width-1-3@m uk-align-center">
-                  <v-card-title class="headline" style="color: #dfdde0">{{element.name}}</v-card-title>
+                <v-card color="#3c234a" class="uk-align-center" style="width: 30vw; min-width: 300px">
+                  <v-card-title class="headline" style="color: #dfdde0">{{element.taskTitle}}</v-card-title>
 
-                  <v-card-subtitle style="color: #dfdde0">Subtitlu</v-card-subtitle>
-
-                  <v-card-text style="color: #dfdde0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et lectus commodo sem fermentum vehicula non vitae tortor. Praesent porttitor eget nunc nec suscipit. Etiam maximus accumsan purus et ultrices. Nulla luctus, leo eu dapibus bibendum, mi arcu elementum nisl, sed mattis felis dui eu orci. Nulla eget elit eget lectus aliquet commodo. Morbi tortor justo, euismod in lectus quis, dapibus laoreet est. Nunc id tellus arcu. Maecenas vestibulum augue a magna luctus, nec accumsan turpis fermentum. </v-card-text>
+                  <v-card-text style="color: #dfdde0"> {{element.taskText}} </v-card-text>
 
                   <v-card-actions>
                     <vk-grid class="uk-align-center">
@@ -61,6 +59,7 @@
 <script>
   import draggable from 'vuedraggable'
   import AddButton from "./AddButton";
+  import axios from "axios";
     export default {
         name: "List",
         components: {
@@ -68,7 +67,6 @@
             AddButton
         },
         props: {
-            list: null,
             group: '',
             drag: false,
             listTitle: '',
@@ -80,23 +78,83 @@
                 opacity: 0.46,
                 zIndex: 5,
                 dialog: false,
-                mappedList: this.list.map(({name, order}) => {
-                    return {
-                        name,
-                        order,
-                        dialog: false,
-                        id: this.group + '_' + order
-                    };
-                })
+                list: null,
+                mappedList: null,
+                storedList: null
             }
+        },
+        mounted() {
+            this.getList();
         },
         computed: {
             dragOptions() {
                 return {
-                    animation: 100,
+                    animation: 0,
                     group: "description",
                     disabled: false
                 };
+            }
+        },
+        methods: {
+            getList () {
+                let vm = this;
+                let axiosConfig = {
+                    headers: {
+                        'Accept': 'application/json',
+                        'Authorization': this.$store.state.authorization
+                    }
+                };
+
+                axios.get('https://rpg-task-organizer-backend.herokuapp.com/users/' + vm.group + '/' + vm.$store.state.userId, axiosConfig)
+                    .then(function (response) {
+                        vm.list = response.data;
+                        vm.mapList();
+                    })
+                    .catch(function (error) {
+                        console.log(error.response.data.message);
+                    })
+            },
+            mapList() {
+                this.mappedList = this.list.map(({id, order, taskTitle, taskText}) => {
+                    return {
+                        id: id,
+                        order: order,
+                        taskTitle: taskTitle,
+                        taskText: taskText,
+                        dialog: false
+                    };
+                });
+            },
+            handleDrag() {
+                this.drag = false;
+                this.reMapList();
+
+                let vm = this;
+                let axiosConfig = {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': this.$store.state.authorization
+                    }
+                };
+
+                axios.put('https://rpg-task-organizer-backend.herokuapp.com/users/' + vm.group + '/' + vm.$store.state.userId, vm.storedList, axiosConfig)
+                    .then(function (response) {
+                        console.log(response.data);
+                    })
+                    .catch(function (error) {
+                        console.log(error.response.data.message);
+                    })
+
+            },
+            reMapList() {
+                this.storedList = this.mappedList.map(({id, order, taskTitle, taskText}, index) => {
+                    return {
+                        id: id,
+                        order: index,
+                        taskTitle: taskTitle,
+                        taskText: taskText
+                    };
+                })
             }
         }
     }

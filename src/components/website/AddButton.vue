@@ -26,7 +26,7 @@
           label=""
           value=""
           hint="Write a description here..."
-        ></v-textarea>
+        />
           </form>
         </v-card-text>
 
