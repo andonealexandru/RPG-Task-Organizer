@@ -1,6 +1,17 @@
 <template>
   <div class="home">
-      <div class="actions-menu kong">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+          <div class="w3-top">
+          <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+            <!-- Float links to the right. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+              <vk-button type="text" @click="$router.push({name: 'Description'})" class="w3-bar-item buton buton uk-width-1-2@m uk-margin-auto ">Home</vk-button>
+            </div>
+          </div>
+        </div>
+      <div class="actions-menu kong" style="margin-top: 50px">
         <div class="contain">
             <div class="col">
                 <ul> 
@@ -14,16 +25,29 @@
                 <ul>
                 <li>Level: {{ heroLevel }}</li>
                 <li>MAX HP: {{ maxHealth }}</li>
-                <li>Current HP: {{ currentHealth }}</li>
                 </ul>
             </div>
-            <br>
-            <div>
+            <div class="col">
+                <h1 class="kong"><img src="../assets/coin.png" alt="gold" class="coin">: 50</h1>
+                
+            </div>
+            <div class = "col">
                 <ul>
                     <li>
-                        <button type="button" class="nes-btn uk-align-right" @click="$router.push('game')">Take a break</button>
+                    </li>
+                    <li>
+                        <button type="button" class="nes-btn" @click="$router.push('game')">Break</button>
                     </li>
                 </ul>
+            </div>
+            <div class = "col">
+              <ul>
+                <li>
+                    </li>
+                <li> 
+                        It costs you 100 <img src="../assets/coin.png" alt="gold"> to take a break... so start working 
+                </li>
+              </ul>
             </div>
 
 
@@ -55,13 +79,14 @@
 
 <script>
   import List from "../components/website/List";
-
+  import Description from "../views/Description"
   export default {
       name: "home",
       display: "Transitions",
       order: 7,
       components: {
-          List
+          List,
+          Description
       },
       data() {
           return {
@@ -187,12 +212,19 @@
 
 <style>
   .nes-btn{
-        width: 300px;
+        width: 100px;
         cursor: pointer;
 }
   .caracter{
         width: 430px;
-        height: 180px;
+        height: 150px;
+        image-rendering: pixelated;
+        image-rendering: -moz-crisp-edges;
+        image-rendering: crisp-edges;
+  }
+  .coin{
+        width: 70px;
+        height: 70px;
         image-rendering: pixelated;
         image-rendering: -moz-crisp-edges;
         image-rendering: crisp-edges;
@@ -221,8 +253,8 @@
     margin-left: 0;
     top: 0;
     height: auto;
-    background-image: linear-gradient(to top,rgba(95, 0, 63, 0) , #1a001a);
-    border-bottom :1px solid #999999;
+    background-color: #3c234a;
+    
   }
 
   .actions-menu .col {
