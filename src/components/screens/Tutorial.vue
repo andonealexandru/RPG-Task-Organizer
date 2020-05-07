@@ -1,8 +1,34 @@
 <template>
   <div class="tutorial-screen">
     <h1 class="kong"> HOW TO PLAY </h1> <br><br>
-    <div class="tutorial-content kong" v-html="tutorialContent">
+    <div class="tutorial-content kong">
+      <p>
+        During your turn, you can choose to attack, heal, or use a special attack.
+Once you perform an action, your enemy will perform one as well!
 
+
+
+Controls:
+
+You can click on the hero's buttons, or use the following commands:
+
+ - Attack: (A)
+
+ - Heal: (H)
+
+ - Special Attack: (S) 
+
+You can also skip screens by pressing Enter!
+
+
+
+Leveling Up:
+
+ Everytime you defeat an enemy, you gain some experience. Given enough experience,
+you will level up!
+
+If you level up, your attack power goes up. You will also heal more, and your health bar will replenish!
+      </p>
     </div>
     <button type="button" class="nes-btn kong" v-on:click="changeView('homeScreen')">
       Return
@@ -63,7 +89,7 @@
 
   .tutorial-screen p {
     font-size: 36px;
-    background: black;
+    
   }
   .nes-btn{
     width: 500px;
