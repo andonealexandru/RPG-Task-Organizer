@@ -37,11 +37,10 @@
                   <v-card-title class="headline" style="color: #dfdde0">{{element.taskTitle}}</v-card-title>
 
                   <v-card-text style="color: #dfdde0"> {{element.taskText}} </v-card-text>
-
                   <v-card-actions>
                     <vk-grid class="uk-align-center">
                       <vk-label @click="element.dialog = false" style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Close</vk-label>
-                      <vk-label style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Done</vk-label>
+                      <vk-label @click="handleDone(element.id)" style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Done</vk-label>
                       <vk-label style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Edit</vk-label>
                     </vk-grid>
                   </v-card-actions>
@@ -50,7 +49,11 @@
             </div>
           </transition-group>
         </draggable>
-        <AddButton />
+        <AddButton
+          :maxorder="getMappedListSize"
+          :resetList="getList"
+          :group="group"
+        />
       </td></tr></tbody>
     </table>
   </div>
@@ -70,7 +73,8 @@
             group: '',
             drag: false,
             listTitle: '',
-            icon: ''
+            icon: '',
+            updateUser: Function
         },
         data () {
             return {
@@ -125,6 +129,9 @@
                     };
                 });
             },
+            getMappedListSize() {
+                return this.mappedList.size;
+            },
             handleDrag() {
                 this.drag = false;
                 this.reMapList();
@@ -155,6 +162,26 @@
                         taskText: taskText
                     };
                 })
+            },
+            handleDone (id) {
+                if (this.group === 'todo') {
+                    let vm = this;
+                    let axiosConfig = {
+                        headers: {
+                            'Authorization': this.$store.state.authorization
+                        }
+                    };
+
+                    axios.delete('https://rpg-task-organizer-backend.herokuapp.com/users/' + vm.group + '/' + vm.$store.state.userId + '/' + id, axiosConfig)
+                        .then(function (response) {
+                            console.log(response.data);
+                            vm.updateUser();
+                            vm.getList();
+                        })
+                        .catch(function (error) {
+                            console.log(error.response.data.message);
+                        })
+                }
             }
         }
     }

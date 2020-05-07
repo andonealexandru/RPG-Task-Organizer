@@ -109,7 +109,7 @@
         return this.$store.state.currentHeroLevel
       },
       heroAttackPower() {
-        return this.heroLevel * 10
+        return 15
       },
       heroHealPower() {
         return this.heroLevel * 20
