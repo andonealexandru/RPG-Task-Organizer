@@ -5,7 +5,7 @@
         <br>
 
      </div>
-     <button type="button" class="nes-btn is-warning kong" v-on:click="handleVictory()">
+     <button type="button" class="nes-btn is-warning kong" v-on:click="handleLoss()">
         Return
     </button>
   </div>
@@ -13,6 +13,7 @@
 
 <script>
   import bucket from '../../javascript/config.js'
+  import store from "../../store";
   const Cosmic = require('cosmicjs');
   const api = Cosmic();
 
@@ -29,12 +30,9 @@
     },
     computed: {},
     methods: {
-      reload() {
-        window.location.reload(true);
-      },
-      handleVictory(){
-        reload();
-        this.$router.push({name: 'Home'})
+      handleLoss() {
+          store.commit("resetData");
+          this.$router.push({name: 'Home'})
       },
       async loadContent() {
         const slug = 'game-over';

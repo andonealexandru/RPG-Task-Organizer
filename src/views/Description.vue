@@ -42,8 +42,8 @@
         <!-- About Section -->
         <div class="w3-container w3-padding-32" id="about">
             <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
-            <p>
-                “RPG Task Organizer” este un program open-source de management al treburilor zilnice, ce trateaza viata ca pe un joc de tip Role-Playing-Game. Cu fiecare obiectiv atins, utilizatorul este recompensat cu monede de aur. Atunci cand s-au strans destule monede, utilizatorul poate cumpara accesul la o lupta in spiritual celor RPG din anii ’90, prin intermediul careia sa se deconecteze de la rutina si sa ia o pauza. Programul nostru se distinge de altele ce au ca scop organizarea treburilor prin elementul nou si surpinzator RPG. Motivatia de a ne termina treburile nu apare intotdeauna usor. Scopul nostru este de a crea un motiv pentru a ne atinge micile obiective, iar cand exista o recompensa spre care sa se tinda, lucrurile pot lua o intorsatura drastica.
+            <p>          
+                "RPG Task Organizer" is an open-source program for managing daily tasks, which treats life just like a Role-Playing-Game. With each goal achieved, the user is rewarded with gold coins. When enough coins have been collected, the user can buy access to a fight reminiscent to the RPGs of the '90s, through which he or she can disconnect from the routine and take a break. Our program is distinguished from others that aim to organize tasks due to the new and surprising RPG element. The motivation to finish our business doesn't always appear easily, therefore, our goal is to create a reason for the user to achieve small goals, and when there is a reward to strive for, things can take a drastic turn.
             </p>
         </div>
 
@@ -63,56 +63,57 @@
         <!-- Usage Section -->
 
         <div class="w3-container w3-padding-32" id="about">
-            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Utilizare</h3>
+            <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Usage</h3>
             <ul>
                 <li>
                     <p>
-                        Ecranul principal este reprezentat de functionalitatea de Log in/Sign in
+                        First things first, the Log in/Sign in functionalities are placed int the main page
                     </p>
                 </li>
                 <li>
                     <p>
-                        In urma procesului de inregistrare, utilizatorul este inatmpinat de tabelele de Habits, Daily Tasks si To Do
+                        After the register process, the user is greeted by the Habits, Daily Tasks and To Do tables
                     </p>
                 </li>
                 <li>
                     <p>
-                         In tabela te Habits, utilizatorul poate adauga task-uri pe care doreste sa le adauge in rutina sa, precum mersul la sala sau consumulde 2 litrii de apa pe zi
+                         In the Habits table, the user can add tasks that he or she would like to have implemented in thir routine, such as gym or a better diet
                     </p>
                 </li>
                 <li>
                     <p>
-                        Tabela de Daily este data de task-urile care fac deja parte din rutina utilizatorului
+                        The Daily table contains tasks that the user has to do every day, just like the name suggests
                     </p>
                 </li>
                 <li>
                     <p>
-                        Ultima tabela cuprinde task-uri ce nu sunt frecvente in viata utilizatorului; acestea pot primi un grad de dificultate in functie de care se calculeaza recompense in monede la indeplinirea task-ului; doar aceste task-uri au ca recompense un numar variabil de monede
+                        The last table consists of tasks that are not frequent in one's life; every accomplished task is rewarded with gold coins
                     </p>
                 </li>
                 <li>
                     <p>
-                        La insumarea unui numar de monede obtinut din ineplinirea oricarui tip de task, se poate inta in pauza, prin cumpararea unei lupte
+                        When summing up a number of coins obtained from performing any type of task, you can take a break by buying a fight
                     </p>
                 </li>
                 <li>
                     <p>
-                        Zona de lupta incepe cu un buton de Play ce trimite la un ecran ce prezinta un scurt context si, ulterior la lupta, si un alt buton de Tutorial in care este descris controlul jocului
+                        The battle zone begins with a Play button that redirects to a screen that shows a short context and another Tutorial button that describes the controls of the game
                     </p>
                 </li>
                 <li>
                     <p>
-                        In joc, putem ataca inamicul care va raspunde la randul sau cu un atac, putem sa ne vindecam sau sa folosim un atac special.
+                        In the game, we can attack the enemy who will respond with an attack, we can heal or use a special attack
                     </p>
                 </li>
                 <li>
                     <p>
-                        Vindecarea se poate realiza de 3 ori consecutiv, dupa care este necesar sa atacam, iar miscarea speciala se incarca dupa 3 atacuri
+                        Healing can be done 3 times in a row, after which it is necessary to attack, whilest the special move is loaded after 3 attacks
                     </p>
                 </li>
                 <li>
                     <p>
-                        Dupa aceasta pauza bine meritata, utilizatorul este trimis inapoi la sectiunea de agenda a aplicatiei pentru a-si continua treburile
+
+After this well-deserved break, the user is sent back to the agenda section of the application to keep on working
                     </p>
                 </li>
             </ul>
@@ -133,7 +134,7 @@
         <!-- Page content -->
         <div class="w3-content w3-padding" style="max-width:1564px">
         <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Developers</h3>
-        <vk-grid class="w3-grayscale uk-child-width-1-2@m">
+         <vk-grid class="w3-grayscale uk-child-width-1-2@m">
             <div class = "w3-center">
             <img src="../assets/alex.jpeg" alt="Alex" class = "imag">
             <h3>Andone Alexandru</h3>
@@ -191,8 +192,8 @@ export default {
     image-rendering: crisp-edges;
 }
 .imag{
-    width: 331px;
-    height: 442px;
+    max-width: 331px;
+    max-height: 442px;
 
 }
 .ul{

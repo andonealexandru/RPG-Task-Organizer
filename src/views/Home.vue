@@ -10,14 +10,14 @@
                 </ul>
             </div>
             <div class="col">
-                <h1 class="kong2">Stats:</h1>
+                <h1 class="kong">Stats:</h1>
                 <ul>
-                <li>Level: {{ heroLevel }}</li>
-                <li>MAX HP: {{ maxHealth }}</li>
+                  <li>Level: {{ heroLevel }}</li>
+                  <li>MAX HP: {{ maxHealth }}</li>
                 </ul>
             </div>
             <div class="col">
-                <h1 class="kong2"><img src="../assets/coin.png" alt="gold" class="coin">: 50</h1>
+                <h1 class="kong"><img src="../assets/coin.png" alt="gold" class="coin">: {{ userData.money }}</h1>
 
             </div>
             <div class = "col">
@@ -25,7 +25,7 @@
                     <li>
                     </li>
                     <li>
-                        <button type="button" class="nes-btn" @click="$router.push('game')">Break</button>
+                        <button type="button" class="nes-btn" :disabled="userData.money < 50" @click="breakTime">Break</button>
                     </li>
                     <li>
                       <button type="button" class="nes-btn" @click="$router.push({name: 'Description'})">Home</button>
@@ -35,9 +35,9 @@
             <div class = "col">
               <ul>
                 <li>
-                    </li>
+                </li>
                 <li>
-                        It costs you 50 <img src="../assets/coin.png" alt="gold"> to take a break... so start working
+                  It costs you 50 <img src="../assets/coin.png" alt="gold"> to take a break... so start working
                 </li>
               </ul>
             </div>
@@ -51,16 +51,19 @@
         group="todo"
         listTitle="To do"
         icon="star"
+        :updateUser="getUser"
       />
       <List
         group="daily"
         listTitle="Daily tasks"
         icon="future"
+        :updateUser="getUser"
       />
       <List
         group="habits"
         listTitle="Habits"
         icon="bolt"
+        :updateUser="getUser"
       />
     </vk-grid>
   </div>
@@ -70,30 +73,38 @@
   import axios from 'axios';
   import List from "../components/website/List";
   import Description from "../views/Description"
+  import Game from "./Game";
+  import store from "../store";
   export default {
       name: "home",
       display: "Transitions",
       order: 7,
       components: {
           List,
-          Description
+          Description,
+          Game
       },
       data() {
           return {
               todo: null,
               daily: null,
-              habits: null
+              habits: null,
+              userData: {
+                  userId: null,
+                  firstName: null,
+                  lastName: null,
+                  email: null,
+                  level: null,
+                  money: null
+              }
           };
       },
-      created() {
-          //this.getTodo();
-          //this.getDaily();
-          //this.getHabits();
+      mounted() {
+          this.getUser();
       },
       computed: {
         currentHealth() {
           return this.$store.state.currentHeroHealth
-
         },
         maxHealth() {
           return this.$store.state.currentHeroMaxHealth
@@ -103,7 +114,7 @@
         }
       },
       methods: {
-          getTodo () {
+          getUser() {
               let vm = this;
               let axiosConfig = {
                   headers: {
@@ -112,32 +123,21 @@
                   }
               };
 
-              axios.get('https://rpg-task-organizer-backend.herokuapp.com/users/todo/' + vm.$store.state.userId, axiosConfig)
-                .then(function (response) {
-                  vm.todo = response.data;
-                })
-                .catch(function (error) {
-                  console.log(error.response.data.message);
-                })
-          },
-          getDaily() {
-              let vm = this;
-              let axiosConfig = {
-                  headers: {
-                      'Accept': 'application/json',
-                      'Authorization': this.$store.state.authorization
-                  }
-              };
-
-              axios.get('https://rpg-task-organizer-backend.herokuapp.com/users/daily/' + vm.$store.state.userId, axiosConfig)
+              axios.get('https://rpg-task-organizer-backend.herokuapp.com/users/' + vm.$store.state.userId, axiosConfig)
                   .then(function (response) {
-                      vm.daily = response.data;
+                      vm.userData = response.data;
+                      vm.saveDataInStore();
                   })
                   .catch(function (error) {
-                      console.log(error.response.data.message);
+                      console.log(error.data);
+                      vm.$router.push({name: 'Description'});
                   })
           },
-          getHabits() {
+          saveDataInStore() {
+              store.commit("changeHeroLevel", this.userData.level);
+              store.commit("resetData");
+          },
+          breakTime () {
               let vm = this;
               let axiosConfig = {
                   headers: {
@@ -146,17 +146,24 @@
                   }
               };
 
-              axios.get('https://rpg-task-organizer-backend.herokuapp.com/users/habits/' + vm.$store.state.userId, axiosConfig)
+              let newUserData = {
+                  money: this.userData.money - 50,
+                  level: this.userData.level
+              };
+
+              axios.put('https://rpg-task-organizer-backend.herokuapp.com/users/' + vm.$store.state.userId, newUserData, axiosConfig)
                   .then(function (response) {
-                      vm.habits = response.data;
+                      vm.userData = response.data;
+                      vm.saveDataInStore();
+                      vm.$router.push('game');
                   })
                   .catch(function (error) {
-                      console.log(error.response.data.message);
-                  })
+                      console.log(error.data);
+                      vm.$router.push({name: 'Description'});
+                  });
           }
       }
   };
-
 </script>
 
 <style>

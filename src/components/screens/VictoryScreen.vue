@@ -13,6 +13,7 @@
 <script>
 
   import bucket from '../../javascript/config.js'
+  import store from "../../store";
   const Cosmic = require('cosmicjs');
   const api = Cosmic();
 
@@ -29,12 +30,9 @@
     },
     computed: {},
     methods: {
-      reloadGame() {
-        window.location.reload(true);
-      },
       handleVictory(){
-        reloadGame();
-        this.$router.push({name: 'Home'})
+          store.commit("resetData");
+          this.$router.push({name: 'Home'});
       },
       async loadContent() {
         const slug = 'victory';
@@ -42,7 +40,7 @@
           const res = await bucket.getObject({ slug });
           this.content = res.object.content
         } catch(e) {
-          console.log('Error getting Victory Screen Object', e)
+          console.log('Error getting Victory Screen Object', e);
         }
       }
     },

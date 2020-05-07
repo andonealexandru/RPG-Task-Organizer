@@ -4,10 +4,10 @@
       <form @submit.prevent="handleSubmit">
         <div>
           <div class="uk-margin">
-            <input v-model="formData.lastName" class="uk-input" type="text" placeholder="Nume" required>
+            <input v-model="formData.lastName" class="uk-input" type="text" placeholder="Last Name" required>
           </div>
           <div class="uk-margin">
-            <input v-model="formData.firstName" class="uk-input" type="text" placeholder="Prenume" required>
+            <input v-model="formData.firstName" class="uk-input" type="text" placeholder="First Name" required>
           </div>
         </div>
         <div >
@@ -22,7 +22,7 @@
         </div>
         <div>
           <div class="uk-margin">
-            <input type="submit" :disabled="disabledButton" class="uk-button uk-button-default" value="Inregistrare">
+            <input type="submit" :disabled="disabledButton" class="uk-button uk-button-default" value="Register">
             <p v-show="!showSpinner">{{ status }}</p>
             <div v-show="showSpinner">
               <vk-spinner class="uk-align-center" style="margin-top: 10px" />
@@ -78,7 +78,7 @@
                   .then(function (response) {
                       vm.responseData = response.data;
                       vm.showSpinner = false;
-                      vm.status = "Verifica-ti adresa de mail pentru mail-ul de confirmare!";
+                      vm.status = "Please confirm your account!";
                   })
                   .catch(function (error) {
                       vm.showSpinner = false;

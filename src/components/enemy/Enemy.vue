@@ -25,10 +25,10 @@
     },
     mounted() {
       this.currentEnemyNames = Object.keys(EnemyList)
+      this.$store.commit('initializeEnemy', EnemyList[this.currentEnemyNames[0]])
     },
-    computed: {
+      computed: {
       currentEnemy() {
-        // let enemy = this.$store.state.currentEnemy
         return this.$store.state.currentEnemy
       },
       currentHeroState() {
@@ -51,8 +51,9 @@
     methods: {
       enemyKilled() {
         if (this.currentEnemyNames.length === 1) {
-          this.$store.commit('changeView', 'victoryScreen')
-          return
+
+            this.$store.commit('changeView', 'victoryScreen')
+            return
         }
         this.$store.commit('grantExperience', this.currentEnemy.experience)
         this.$store.commit('changeView', 'enemyDefeated')
@@ -77,9 +78,9 @@
 <style scoped>
 
     .nes-progress{
-    height: 3vh;
-    width: 105px;
-  }
+      height: 3vh;
+      width: 105px;
+    }
 
     .caracter{
       height: 250px;

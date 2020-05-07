@@ -1,7 +1,31 @@
 <template>
   <div>
-    <p style="color: white">{{status}}</p>
-    <vk-button style="color: white" @click="$router.push({name: 'Description'})">RETURN HOME</vk-button>
+    <!-- Card de confirmare email-->
+
+    <v-overlay
+      :absolute="absolute"
+      :opacity="opacity"
+      :value="overlay"
+      :z-index="zIndex"
+    >
+      <v-card color="#3c234a" class="uk-align-center" style="width: 30vw; min-width: 300px">
+        <v-card-title class="headline" style="color: #dfdde0">Welcome!</v-card-title>
+
+        <v-card-text style="color: #dfdde0">
+          
+          <h3 class="uk-card-title" style="color: #dfdde0">{{status}}</h3>
+          
+        </v-card-text>
+
+        <v-card-actions>
+          <vk-grid class="uk-align-center">
+            <vk-label style="background-color: #3c234a; cursor: pointer; margin: 0 15px;" @click="$router.push({name: 'Description'})">FINISH</vk-label>
+          </vk-grid>
+        </v-card-actions>
+      </v-card>
+    </v-overlay>
+
+    <!-- END Card de confirmare email-->
   </div>
 </template>
 

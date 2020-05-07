@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
+import axios from 'axios'
 
 Vue.use(Vuex);
 
@@ -44,6 +45,21 @@ const store = new Vuex.Store({
     },
     changeAuth(state, authorization) {
       state.authorization = authorization;
+    },
+    changeHeroLevel(state, heroLevel) {
+      state.currentHeroLevel = heroLevel;
+    },
+    resetData(state) {
+      state.currentView = 'homeScreen';
+      state.currentActionMessagesFirst = 'Begin Fight';
+      state.currentActionMessagesSecond = '';
+      state.currentActionMessagesThird = 'Good luck!';
+      state.currentHeroHealth = 100;
+      state.currentHeroMaxHealth = 100;
+      state.currentHeroExperience = 0;
+      state.experienceToNextLevel = 50;
+      state.currentHeroState = 'Idle';
+      state.currentEnemy = null;
     },
     changeView(state, view) {
       return state.currentView = view
@@ -91,7 +107,29 @@ const store = new Vuex.Store({
         state.currentHeroLevel += 1;
         state.currentHeroMaxHealth += 50;
         state.currentHeroHealth = state.currentHeroMaxHealth;
-        state.experienceToNextLevel = (state.currentHeroLevel * 50)
+        state.experienceToNextLevel = (state.currentHeroLevel * 50);
+
+        let vm = this;
+
+        let data = {
+          money: 0,
+          level: state.currentHeroLevel
+        };
+
+        let axiosConfig = {
+          headers: {
+            'Accept': 'application/json',
+            'Authorization': state.authorization
+          }
+        };
+
+        axios.put('https://rpg-task-organizer-backend.herokuapp.com/users/' + state.userId, data, axiosConfig)
+            .then(function (response) {
+              console.log(response.data);
+            })
+            .catch(function (error) {
+              console.log(error.data);
+            })
       }
     }
   }
