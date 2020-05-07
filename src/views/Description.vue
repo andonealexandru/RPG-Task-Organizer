@@ -13,19 +13,16 @@
                 <vk-button type="text" @click="showSignin = true" class="w3-bar-item buton uk-width-1-2@m uk-margin-auto">Sign in</vk-button>
                 <vk-modal :show.sync="showLogin" >
                 <vk-modal-title>Log in</vk-modal-title>
-                <Login /><!--
-                <p class="uk-text-right">
-                    <vk-button class="uk-margin-small-right">Next</vk-button>
-                </p>-->
+                <Login
+                    :close="closeModals"
+                />
                 </vk-modal>
 
                 <vk-modal :show.sync="showSignin" >
                 <vk-modal-title>Sign in</vk-modal-title>
-                <Signin />
-                    <!--
-                <p class="uk-text-right">
-                    <vk-button class="uk-margin-small-right">Next</vk-button>
-                </p>-->
+                <Signin
+                    :close="closeModals"
+                />
                 </vk-modal>
             </div>
         </div>
@@ -167,15 +164,21 @@ import Signin from '../components/Signin'
 export default {
     name: "description",
     data() {
-            return {
-                showLogin: false,
-                showSignin: false
-            }
-        },
-    components: {
-            Login,
-            Signin
+        return {
+            showLogin: false,
+            showSignin: false
         }
+    },
+    components: {
+        Login,
+        Signin
+    },
+    methods: {
+        closeModals() {
+            this.showLogin = false;
+            this.showSignin = false;
+        }
+    }
 }
 </script>
 
