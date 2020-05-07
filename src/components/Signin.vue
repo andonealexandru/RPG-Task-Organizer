@@ -40,6 +40,9 @@
 
   export default {
       name: "Signin",
+      props: {
+          close: Function
+      },
       data () {
           return {
               formData: {
@@ -75,7 +78,7 @@
                   .then(function (response) {
                       vm.responseData = response.data;
                       vm.showSpinner = false;
-                      vm.status = "Verifica-ti adresa de mail pentru mail-ul de confirmare!"
+                      vm.status = "Verifica-ti adresa de mail pentru mail-ul de confirmare!";
                   })
                   .catch(function (error) {
                       vm.showSpinner = false;

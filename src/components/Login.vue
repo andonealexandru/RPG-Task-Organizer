@@ -33,6 +33,9 @@
 
     export default {
         name: "Login",
+        props: {
+            close: Function
+        },
         data () {
             return {
                 formData: {
@@ -63,13 +66,17 @@
                         store.commit("changeUserId", response.headers['userid']);
                         store.commit("changeLogged");
                         vm.status = "Conectat! Iti pregatim task-urile";
-                        vm.$router.push({name: 'Home'});
+                        vm.closeModalAndRedirect();
                     })
                     .catch(function (error) {
                         vm.showSpinner = false;
                         vm.disabledButton = false;
                         vm.status = "Email sau parola gresita! In caz ca nu ti-ai verificat adresa de email, te rugam sa o verifici!"
                     })
+            },
+            closeModalAndRedirect() {
+                setTimeout(() => {this.close();}, 700);
+                setTimeout(() => {this.$router.push({name: 'Home'});}, 1000);
             }
         }
     }
