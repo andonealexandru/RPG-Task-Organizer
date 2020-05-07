@@ -41,7 +41,6 @@
                     <vk-grid class="uk-align-center">
                       <vk-label @click="element.dialog = false" style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Close</vk-label>
                       <vk-label @click="handleDone(element.id)" style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Done</vk-label>
-                      <vk-label style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Edit</vk-label>
                     </vk-grid>
                   </v-card-actions>
                 </v-card>
@@ -164,24 +163,22 @@
                 })
             },
             handleDone (id) {
-                if (this.group === 'todo') {
-                    let vm = this;
-                    let axiosConfig = {
-                        headers: {
-                            'Authorization': this.$store.state.authorization
-                        }
-                    };
+                let vm = this;
+                let axiosConfig = {
+                    headers: {
+                        'Authorization': this.$store.state.authorization
+                    }
+                };
 
-                    axios.delete('https://rpg-task-organizer-backend.herokuapp.com/users/' + vm.group + '/' + vm.$store.state.userId + '/' + id, axiosConfig)
-                        .then(function (response) {
-                            console.log(response.data);
-                            vm.updateUser();
-                            vm.getList();
-                        })
-                        .catch(function (error) {
-                            console.log(error.response.data.message);
-                        })
-                }
+                axios.delete('https://rpg-task-organizer-backend.herokuapp.com/users/' + vm.group + '/' + vm.$store.state.userId + '/' + id, axiosConfig)
+                    .then(function (response) {
+                        console.log(response.data);
+                        vm.updateUser();
+                        vm.getList();
+                    })
+                    .catch(function (error) {
+                        console.log(error.response.data.message);
+                    })
             }
         }
     }

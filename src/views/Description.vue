@@ -32,7 +32,7 @@
         <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
         <img class="w3-image" src="../assets/header.png" alt="header" width="1500" height="800">
         <div class="w3-display-middle w3-margin-top w3-center">
-            <h1 class="w3-xxlarge w3-text-white"><img class = "imagine" src = "../assets/icon.png"></span> <span class="w3-hide-small w3-text-light-grey">RPG Task Organizer</span></h1>
+            <h1 class="w3-xxlarge w3-text-white"><img class = "imagine" src = "../assets/icon.png"> <span class="w3-hide-small w3-text-light-grey">RPG Task Organizer</span></h1>
         </div>
         </header>
 
@@ -42,7 +42,7 @@
         <!-- About Section -->
         <div class="w3-container w3-padding-32" id="about">
             <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
-            <p>          
+            <p>
                 "RPG Task Organizer" is an open-source program for managing daily tasks, which treats life just like a Role-Playing-Game. With each goal achieved, the user is rewarded with gold coins. When enough coins have been collected, the user can buy access to a fight reminiscent to the RPGs of the '90s, through which he or she can disconnect from the routine and take a break. Our program is distinguished from others that aim to organize tasks due to the new and surprising RPG element. The motivation to finish our business doesn't always appear easily, therefore, our goal is to create a reason for the user to achieve small goals, and when there is a reward to strive for, things can take a drastic turn.
             </p>
         </div>

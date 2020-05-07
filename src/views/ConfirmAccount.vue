@@ -12,9 +12,9 @@
         <v-card-title class="headline" style="color: #dfdde0">Welcome!</v-card-title>
 
         <v-card-text style="color: #dfdde0">
-          
+
           <h3 class="uk-card-title" style="color: #dfdde0">{{status}}</h3>
-          
+
         </v-card-text>
 
         <v-card-actions>
@@ -36,7 +36,7 @@
         data () {
             return {
                 token: this.$route.params.token,
-                status: 'Validare cont...',
+                status: 'Checking your email address...',
                 response: null
             }
         },
@@ -57,7 +57,7 @@
                 axios.get('https://rpg-task-organizer-backend.herokuapp.com/users/confirm-account?token=' + this.token, axiosConfig)
                     .then(function (response) {
                         vm.response = response.data;
-                        vm.status = "Acum te poti conecta la contul tau!";
+                        vm.status = "You can now use our tool freely!";
                     })
                     .catch(function (error) {
                         vm.showSpinner = false;
