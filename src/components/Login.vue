@@ -14,7 +14,7 @@
         </div>
         <div>
           <div class="uk-margin">
-            <input type="submit" :disabled="disabledButton" class="uk-button uk-button-default" value="Conectare">
+            <input type="submit" :disabled="disabledButton" class="uk-button uk-button-default" value="Connect">
             <p v-show="!showSpinner">{{ status }}</p>
             <div v-show="showSpinner">
               <vk-spinner class="uk-align-center" style="margin-top: 10px" />
@@ -65,13 +65,13 @@
                         store.commit("changeAuth", response.headers['authorization']);
                         store.commit("changeUserId", response.headers['userid']);
                         store.commit("changeLogged");
-                        vm.status = "Conectat! Iti pregatim task-urile";
+                        vm.status = "Connected! Preparing your tasks...";
                         vm.closeModalAndRedirect();
                     })
                     .catch(function (error) {
                         vm.showSpinner = false;
                         vm.disabledButton = false;
-                        vm.status = "Email sau parola gresita! In caz ca nu ti-ai verificat adresa de email, te rugam sa o verifici!"
+                        vm.status = "Wrong email or password! In case you haven't checked your e-mail adress, please do so!"
                     })
             },
             closeModalAndRedirect() {
