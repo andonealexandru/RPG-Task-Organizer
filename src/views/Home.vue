@@ -72,7 +72,7 @@
 <script>
   import axios from 'axios';
   import List from "../components/website/List";
-  import Description from "../views/Description"
+  import Description from "./OpeningPage"
   import Game from "./Game";
   import store from "../store";
   export default {

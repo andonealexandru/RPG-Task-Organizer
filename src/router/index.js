@@ -7,7 +7,7 @@ Vue.use(VueRouter);
   {
     path: '/',
     name: 'Description',
-    component: () => import('../views/Description.vue')
+    component: () => import('../views/OpeningPage.vue')
   },
   {
     path: '/home',
