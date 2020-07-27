@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card :tile="true" color="#3c234a" style="margin-bottom: 7px; cursor: pointer;" @click="overlay = true">
+    <v-card :tile="true" color="#113448" style="margin-bottom: 7px; cursor: pointer;" @click="overlay = true">
       <v-card-text class="uk-width-1-1">
         <vk-icon-link style="color: #dfdde0; margin: 0;" class="uk-align-center" ratio="1" icon="plus" />
       </v-card-text>
@@ -12,7 +12,7 @@
       :value="overlay"
       :z-index="zIndex"
     >
-      <v-card color="#3c234a" class="uk-align-center" style="width: 30vw; min-width: 300px">
+      <v-card color="#113448" class="uk-align-center" style="width: 30vw; min-width: 300px">
         <v-card-title class="headline" style="color: #dfdde0">Add a new Task</v-card-title>
 
         <v-card-text style="color: #dfdde0">
@@ -34,8 +34,8 @@
 
         <v-card-actions>
           <vk-grid class="uk-align-center">
-            <vk-label @click="overlay = false" style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Close</vk-label>
-            <vk-label @click="handleSubmit" style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Add task</vk-label>
+            <vk-label @click="overlay = false" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Close</vk-label>
+            <vk-label @click="handleSubmit" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Add task</vk-label>
           </vk-grid>
         </v-card-actions>
       </v-card>

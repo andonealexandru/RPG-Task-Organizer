@@ -1,10 +1,10 @@
 <template>
   <div>
-    <table class="is-bordered is-centered" style="background-color: rgba(60, 35, 74, 0.2); width: 100%">
+    <table class="is-bordered is-centered" style="background-color: rgba(17, 52, 72, 0.2); width: 100%">
       <thead>
       <tr>
         <th>
-          <v-card :tile="true" color="#3c234a">
+          <v-card :tile="true" color="#113448">
             <vk-icon-link style="color: #dfdde0; margin: 0;" class="uk-align-right uk-padding-small" ratio="1.5" :icon="icon" />
             <v-card-title style="color: #dfdde0">{{listTitle}}</v-card-title>
           </v-card>
@@ -24,7 +24,7 @@
         >
           <transition-group type="transition" :name="!drag ? 'flip-list' : null">
             <div v-for="element in mappedList" :key="element.order">
-              <v-card :tile="true" color="#3c234a" style="margin-bottom: 7px" class="list-group-item" @click="element.dialog = true">
+              <v-card :tile="true" color="#113448" style="margin-bottom: 7px" class="list-group-item" @click="element.dialog = true">
                   <v-card-text style="color: #dfdde0">{{ element.taskTitle }}</v-card-text>
               </v-card>
               <v-overlay
@@ -33,14 +33,18 @@
                 :value="element.dialog"
                 :z-index="zIndex"
               >
-                <v-card color="#3c234a" class="uk-align-center" style="width: 30vw; min-width: 300px">
+                <v-card color="#113448" class="uk-align-center" style="width: 30vw; min-width: 300px">
                   <v-card-title class="headline" style="color: #dfdde0">{{element.taskTitle}}</v-card-title>
 
                   <v-card-text style="color: #dfdde0"> {{element.taskText}} </v-card-text>
                   <v-card-actions>
                     <vk-grid class="uk-align-center">
-                      <vk-label @click="element.dialog = false" style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Close</vk-label>
-                      <vk-label @click="handleDone(element.id)" style="background-color: #3c234a; cursor: pointer; margin: 0 15px;">Done</vk-label>
+                      <!-- Close button-->
+                      <vk-label @click="element.dialog = false" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Close</vk-label>
+                      <!-- Edit button-->
+                      <vk-label style="background-color: #113448; cursor: pointer; margin: 0 15px;">Edit</vk-label>
+                      <!-- Done button-->
+                      <vk-label @click="handleDone(element.id)" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Done</vk-label>
                     </vk-grid>
                   </v-card-actions>
                 </v-card>
