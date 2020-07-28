@@ -60,7 +60,7 @@
 <script>
   import axios from 'axios';
   import List from "../components/website/List";
-  import Description from "../views/Description"
+  import Description from "./OpeningPage"
   import Game from "./Game";
   import store from "../store";
   export default {
@@ -144,7 +144,7 @@
                   .then(function (response) {
                       vm.userData = response.data;
                       vm.saveDataInStore();
-                      vm.$router.push('game');
+                      vm.$router.push('Game');
                   })
                   .catch(function (error) {
                       console.log(error.data);

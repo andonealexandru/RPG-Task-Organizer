@@ -1,0 +1,58 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(86,103,113);
+    background: linear-gradient(90deg, rgba(86,103,113,1) 0%, rgba(218,196,148,1) 33%, rgba(86,103,113,1) 100%);
+}
+
+.computer-container {
+    position: relative;
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+}
+
+.computer-monitor {
+    margin: 0 auto;
+    height: 660px;
+    width: 1030px;
+    background-color: #37474F;
+    border: 20px solid #546E7A;
+    border-top-right-radius: 2rem;
+    border-top-left-radius: 2rem;
+}
+
+.computer-bottom {
+    position: relative;
+    z-index: 1;
+    box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    border-bottom-right-radius: 2rem;
+    border-bottom-left-radius: 2rem;
+    width: 1030px;
+    height: 100px;
+    background-color: #F5F5F5;
+}
+
+.computer-stand {
+    box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.25);
+    position: relative;
+    z-index: 0;
+    margin: 0 auto;
+    height: 75px;
+    width: 200px;
+    background-color: #EEEEEE;
+    -webkit-clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+    clip-path: polygon(5% 0%, 95% 0%, 100% 100%, 0% 100%);
+}
+
+.computer-stand-bottom {
+    box-shadow: 5px 5px 11px rgba(0, 0, 0, 0.25);
+    margin: 0 auto;
+    height: 25px;
+    width: 250px;
+    background-color: #F5F5F5;
+    border-top-right-radius: 2rem;
+    border-top-left-radius: 2rem;
+}

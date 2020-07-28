@@ -1,49 +1,30 @@
 <template>
-  <div id="game">
-    <HomeScreen v-show="currentView === 'homeScreen'"/>
-    <StoryIntro v-show="currentView === 'storyIntro'"/>
-    <PlayGame v-show="currentView === 'playGame'"/>
-    <EnemyDefeated v-show="currentView === 'enemyDefeated'"/>
-    <Tutorial v-show="currentView === 'howToPlay'"/>
-    <GameOver v-show="currentView === 'gameOver'"/>
-    <VictoryScreen v-show="currentView === 'victoryScreen'"/>
+  <div class="scrollNo" scroll="no">
+
+    <div class="computer-monitor">
+
+    <unity src="js/Build/RPG%20Task%20Organizer.json" width="990" heighht="600"
+          unityLoader="js/Build/UnityLoader.js" />
+    </div>
+    <div class="computer-bottom"></div>
+		<div class="computer-stand"></div>
+		<div class="computer-stand-bottom"></div>
+
   </div>
 </template>
 
 <script>
-    import HomeScreen from "../components/screens/HomeScreen";
-    import StoryIntro from "../components/screens/StoryIntro";
-    import PlayGame from "../components/screens/PlayGame";
-    import EnemyDefeated from "../components/screens/EnemyDefeated";
-    import Tutorial from "../components/screens/Tutorial";
-    import GameOver from "../components/screens/GameOver";
-    import VictoryScreen from "../components/screens/VictoryScreen";
-
+    import Unity from 'vue-unity-webgl'
     export default {
         name: "Game",
         components: {
-            HomeScreen,
-            StoryIntro,
-            PlayGame,
-            GameOver,
-            EnemyDefeated,
-            VictoryScreen,
-            Tutorial
-        },
-        computed: {
-            currentView() {
-                return this.$store.state.currentView
-            }
+            Unity
         }
     }
 </script>
 
 <style >
-  #game {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
+  /*@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css";*/
+  /*@import "../assets/game/style.css";*/
+  @import "../assets/game/TemplateData/style.css";
 </style>
