@@ -42,7 +42,12 @@
                         v-model="element.taskTitle"
                     />
                   </v-card-title>
-                  <v-card-text style="color: #dfdde0"> {{element.taskText}} </v-card-text>
+                  <v-card-text style="color: #dfdde0">
+                    <div v-if="!editStyle">
+                      {{element.taskText}}
+                    </div>
+                    <v-text-field v-if="editStyle" v-model="element.taskText" />
+                  </v-card-text>
 
                   <v-card-actions>
                     <vk-grid class="uk-align-center">
@@ -242,6 +247,7 @@
   }
   .list-group-item {
     cursor: move;
+    padding: 0 !important;
   }
   .list-group-item i {
     cursor: pointer;
