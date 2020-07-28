@@ -55,8 +55,7 @@
                 let axiosConfig = {
                     headers: {
                         'Content-Type': 'application/json',
-                        'Accept': 'application/json',
-                        'Access-Control-Allow-Origin': 'https://rpg-task-organizer.herokuapp.com/'
+                        'Accept': 'application/json'
                     }
                 };
 
