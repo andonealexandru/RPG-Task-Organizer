@@ -16,7 +16,7 @@
 </script>
 
 <style >
-  @import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css";
-  @import "../assets/game/style.css";
+  /*@import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css";*/
+  /*@import "../assets/game/style.css";*/
   @import "../assets/game/TemplateData/style.css";
 </style>

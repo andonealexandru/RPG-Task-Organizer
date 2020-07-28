@@ -144,7 +144,7 @@
                   .then(function (response) {
                       vm.userData = response.data;
                       vm.saveDataInStore();
-                      vm.$router.push('game');
+                      vm.$router.push('Game');
                   })
                   .catch(function (error) {
                       console.log(error.data);

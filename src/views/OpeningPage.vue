@@ -390,7 +390,7 @@
 <script>
     export default {
         name: "OpeningPage",
-        mounted() {
+        created() {
             this.$loadScript("js/jquery.min.js");
             this.$loadScript("js/popper.min.js");
             this.$loadScript("js/bootstrap.min.js");

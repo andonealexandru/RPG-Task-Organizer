@@ -34,17 +34,29 @@
                 :z-index="zIndex"
               >
                 <v-card color="#113448" class="uk-align-center" style="width: 30vw; min-width: 300px">
-                  <v-card-title class="headline" style="color: #dfdde0">{{element.taskTitle}}</v-card-title>
-
+                  <v-card-title class="headline" style="color: #dfdde0">
+                    <div v-if="!editStyle">
+                      {{element.taskTitle}}
+                    </div>
+                    <v-text-field v-if="editStyle"
+                        v-model="element.taskTitle"
+                    />
+                  </v-card-title>
                   <v-card-text style="color: #dfdde0"> {{element.taskText}} </v-card-text>
+
                   <v-card-actions>
                     <vk-grid class="uk-align-center">
                       <!-- Close button-->
-                      <vk-label @click="element.dialog = false" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Close</vk-label>
+                      <vk-label v-if="!editStyle" @click="element.dialog = false" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Close</vk-label>
                       <!-- Edit button-->
-                      <vk-label style="background-color: #113448; cursor: pointer; margin: 0 15px;">Edit</vk-label>
+                      <vk-label v-if="!editStyle" @click="editStyle = true" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Edit</vk-label>
                       <!-- Done button-->
-                      <vk-label @click="handleDone(element.id)" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Done</vk-label>
+                      <vk-label v-if="!editStyle" @click="handleDone(element.id)" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Done</vk-label>
+
+                      <!-- Cancel button-->
+                      <vk-label v-if="editStyle" @click="element.dialog = editStyle = false" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Cancel</vk-label>
+                      <!-- Save button-->
+                      <vk-label v-if="editStyle" @click="updateList(element.dialog)" style="background-color: #113448; cursor: pointer; margin: 0 15px;">Save</vk-label>
                     </vk-grid>
                   </v-card-actions>
                 </v-card>
@@ -77,12 +89,15 @@
             drag: false,
             listTitle: '',
             icon: '',
-            updateUser: Function
+            updateUser: Function,
+            editStyle: false,
+            editElementTitle: ""
         },
         data () {
             return {
                 absolute: true,
-                opacity: 0.46,
+                opacity: 0.46,l
+                
                 zIndex: 5,
                 dialog: false,
                 list: null,
@@ -155,6 +170,27 @@
                         console.log(error.response.data.message);
                     })
 
+            },
+            updateList(dialog) {
+                dialog = false;
+                this.editStyle = false;
+                this.reMapList();
+
+                let vm = this;
+                let axiosConfig = {
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': this.$store.state.authorization
+                    }
+                };
+
+                axios.put('https://rpg-task-organizer-backend.herokuapp.com/users/' + vm.group + '/' + vm.$store.state.userId, vm.storedList, axiosConfig)
+                    .then(function (response) {
+                        console.log(response.data);
+                    })
+                    .catch(function (error) {
+                        console.log(error.response.data.message);
+                    })
             },
             reMapList() {
                 this.storedList = this.mappedList.map(({id, order, taskTitle, taskText}, index) => {
