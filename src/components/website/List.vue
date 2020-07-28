@@ -96,8 +96,7 @@
         data () {
             return {
                 absolute: true,
-                opacity: 0.46,l
-                
+                opacity: 0.46,
                 zIndex: 5,
                 dialog: false,
                 list: null,

@@ -1,14 +1,40 @@
 <template>
   <div style="background-color: white">
-    <!-- Navbar -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- Navbar (sit on top) -->
+        <div class="w3-top">
+        <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+            <img src="../assets/icon.png" class="w3-bar-item">
+          <!-- Float links to the right. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+                <vk-button type="text" @click="showLogin = true" class="w3-bar-item buton buton uk-width-1-2@m uk-margin-auto">Log in</vk-button>
+                <vk-button type="text" @click="showSignin = true" class="w3-bar-item buton uk-width-1-2@m uk-margin-auto">Sign up</vk-button>
+                <vk-modal :show.sync="showLogin" >
+                <vk-modal-title>Log in</vk-modal-title>
+                <Login
+                    :close="closeModals"
+                />
+                </vk-modal>
+
+                <vk-modal :show.sync="showSignin" >
+                <vk-modal-title>Sign in</vk-modal-title>
+                <Signin
+                    :close="closeModals"
+                />
+                </vk-modal>
+            </div>
+        </div>
+        </div>
+      <!--
+
     <nav class="navbar navbar-expand-md navbar-dark navbar-custom fixed-top">
 
-      <!-- Mobile Menu Toggle Button -->
+      <
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-awesome fas fa-bars"></span>
         <span class="navbar-toggler-awesome fas fa-times"></span>
       </button>
-      <!-- end of mobile menu toggle button -->
+
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav ml-auto">
@@ -24,8 +50,8 @@
         </ul>
       </div>
     </nav>
-    <!-- end of navbar -->
 
+-->
 
     <!-- Header -->
     <header id="header" class="header">
@@ -388,9 +414,28 @@
 </template>
 
 <script>
+
+    import Login from '../components/Login'
+    import Signin from '../components/Signin'
     export default {
         name: "OpeningPage",
-        created() {
+        data() {
+          return {
+              showLogin: false,
+              showSignin: false
+          }
+        },
+        components: {
+            Login,
+            Signin
+        },
+        methods: {
+            closeModals() {
+                this.showLogin = false;
+                this.showSignin = false;
+            }
+        },
+        mounted() {
             this.$loadScript("js/jquery.min.js");
             this.$loadScript("js/popper.min.js");
             this.$loadScript("js/bootstrap.min.js");
